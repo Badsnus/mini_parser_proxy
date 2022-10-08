@@ -7,7 +7,7 @@ def get_proxies(url: str) -> set[str]:
     response = get(url)
     if response.status_code == 200:
         return set(response.text.splitlines())
-    print('Сервер не отвечает')
+    print('Сервер не отвечает. Ухожу в сон')
     return set()
 
 
@@ -33,7 +33,7 @@ def main(url: str) -> None:
             new_proxies = proxies_got - proxies
             write_in_file(file_name, new_proxies)
             print(f'Получил {len(new_proxies)} новых прокси. Ухожу в сон')
-            sleep(time_to_sleep)
+        sleep(time_to_sleep)
 
 
 if __name__ == "__main__":
